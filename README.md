@@ -1,1 +1,13 @@
-# app-builder-samples
+# Adobe App Builder Samples
+
+## Motivation
+
+The intent is to learn by example, following our best practices for developing Out-of-Process Extensions for Adobe Commerce.
+
+## Introduction
+
+Each repository is a separate project that can be checked, built, ran locally and deployed. For more information about each, refer to the README.md file in each repository. 
+
+## License
+
+[Enterprise Edition License](LICENSE_EE.txt)
