@@ -16,6 +16,7 @@ import { Provider, lightTheme } from '@adobe/react-spectrum'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Route, BrowserRouter, Routes } from 'react-router-dom'
 import { MainPage } from './MainPage'
+import ExtensionRegistration from './ExtensionRegistration'
 
 function App (props) {
   console.log('runtime object:', props.runtime)
@@ -36,7 +37,8 @@ function App (props) {
           <BrowserRouter>
               <Provider theme={lightTheme} colorScheme={'light'}>
                   <Routes>
-                      <Route path="/" element={<MainPage runtime={props.runtime} ims={props.ims} />} />
+                      <Route path={'index.html'} element={<ExtensionRegistration />} />
+                      <Route index element={<MainPage runtime={props.runtime} ims={props.ims} />} />
                   </Routes>
               </Provider>
           </BrowserRouter>

@@ -1,0 +1,8 @@
+{
+  "name": "commerce-first-app",
+  "displayName": "Commerce First App on App Builder",
+  "description": "Commerce First App on App Builder",
+  "platform": "web",
+  "id": "commerce-first-app",
+  "version": "1.0.0"
+}
