@@ -43,7 +43,7 @@ const init = async () => {
       },
       page: {
         getTitle() {
-          return 'Commerce First App on App Builder';
+          return 'Adobe Commerce First App on App Builder';
         },
       },
     },
