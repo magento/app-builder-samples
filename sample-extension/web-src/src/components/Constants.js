@@ -1,4 +1,4 @@
 module.exports = {
-  extensionId: 'commerce-first-app',
+  extensionId: 'commerce_first_app',
   rootElementId: 'backend-ui',
 };

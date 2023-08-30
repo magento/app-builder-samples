@@ -11,8 +11,8 @@
  * is strictly forbidden unless prior written permission is obtained
  * from Adobe.
  */
-import { register } from '@adobe/uix-guest';
-import { extensionId } from './Constants';
+import { register } from '@adobe/uix-guest'
+import { extensionId } from './Constants'
 
 export default function ExtensionRegistration() {
   init().catch(console.error);
@@ -22,30 +22,45 @@ export default function ExtensionRegistration() {
 const init = async () => {
   await register({
     id: extensionId,
-    debug: false,
     methods: {
-      extension: {
-        getId() {
-          return 'commerce-first-app';
-        }
-      },
       menu: {
         getItems() {
           return [
             {
-              id: 'ext_page',
+              id: `${extensionId}`,
               title: 'First App on App Builder',
-              action: `uixpage/index/index/uix-ext/${extensionId}`,
-              parent: 'Magento_Backend::marketing',
-            },
-          ];
-        },
+              parent: 'Magento_Backend::marketing'
+            }
+          ]
+        }
       },
       page: {
         getTitle() {
-          return 'Adobe Commerce First App on App Builder';
-        },
+          return 'Adobe Commerce First App on App Builder'
+        }
       },
-    },
-  });
-};
+      product: {
+        getMassActions() {
+          return [
+            {
+              actionId: `${extensionId}::first-mass-action`,
+              label: 'First App Mass Action',
+              type: `${extensionId}.first-mass-action`,
+              confirm: {
+                title: 'First App Mass Action',
+                message: 'Are you sure your want to proceed with First App Mass Action on selected products?'
+              },
+              path: 'first-mass-action'
+            },
+            {
+              actionId: `${extensionId}::another-first-mass-action`,
+              label: 'Another Mass Action',
+              type: `${extensionId}.another-mass-action`,
+              path: 'another-mass-action'
+            }
+          ]
+        }
+      }
+    }
+  })
+}
