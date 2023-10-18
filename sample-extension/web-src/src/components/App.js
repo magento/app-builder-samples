@@ -14,8 +14,7 @@
 import React from 'react'
 import { Provider, lightTheme } from '@adobe/react-spectrum'
 import { ErrorBoundary } from 'react-error-boundary'
-import { Route, BrowserRouter, Routes } from 'react-router-dom'
-import { MainPage } from './MainPage'
+import { Route, Routes, HashRouter } from 'react-router-dom'
 import ExtensionRegistration from './ExtensionRegistration'
 import { FirstMassAction } from './massActions/FirstMassAction'
 import { AnotherMassAction } from './massActions/AnotherMassAction'
@@ -36,16 +35,15 @@ function App (props) {
 
   return (
       <ErrorBoundary onError={onError} FallbackComponent={fallbackComponent}>
-          <BrowserRouter>
+          <HashRouter>
               <Provider theme={lightTheme} colorScheme={'light'}>
                   <Routes>
-                      <Route index element={<MainPage runtime={props.runtime} ims={props.ims} />} />
-                      <Route path={'index.html'} element={<ExtensionRegistration />} />
-                      <Route path={'first-mass-action'} element={<FirstMassAction />} />
-                      <Route path={'another-mass-action'} element={<AnotherMassAction />} />
+                      <Route index element={<ExtensionRegistration runtime={props.runtime} ims={props.ims} />} />
+                      <Route path={'first-mass-action'} element={<FirstMassAction runtime={props.runtime} ims={props.ims} />} />
+                      <Route path={'another-mass-action'} element={<AnotherMassAction runtime={props.runtime} ims={props.ims} />} />
                   </Routes>
               </Provider>
-          </BrowserRouter>
+          </HashRouter>
       </ErrorBoundary>
   )
 

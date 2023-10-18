@@ -13,10 +13,11 @@
  */
 import { register } from '@adobe/uix-guest'
 import { extensionId } from './Constants'
+import { MainPage } from './MainPage'
 
-export default function ExtensionRegistration() {
-  init().catch(console.error);
-  return <></>;
+export default function ExtensionRegistration(props) {
+  init().catch(console.error)
+  return <MainPage runtime={props.runtime} ims={props.ims} />
 }
 
 const init = async () => {
@@ -27,16 +28,22 @@ const init = async () => {
         getItems() {
           return [
             {
-              id: `${extensionId}`,
+              id: `${extensionId}::first`,
               title: 'First App on App Builder',
-              parent: 'Magento_Backend::marketing'
+              parent: `${extensionId}::apps`,
+              sortOrder: 1
+            },
+            {
+              id: `${extensionId}::apps`,
+              title: 'Apps',
+              isSection: true
             }
           ]
         }
       },
       page: {
         getTitle() {
-          return 'Adobe Commerce First App on App Builder'
+          return 'First App on App Builder'
         }
       },
       product: {
@@ -50,15 +57,46 @@ const init = async () => {
                 title: 'First App Mass Action',
                 message: 'Are you sure your want to proceed with First App Mass Action on selected products?'
               },
-              path: 'first-mass-action'
+              path: '#/first-mass-action',
+              productSelectLimit: 1
             },
             {
               actionId: `${extensionId}::another-first-mass-action`,
               label: 'Another Mass Action',
               type: `${extensionId}.another-mass-action`,
-              path: 'another-mass-action'
+              path: '#/another-mass-action'
             }
           ]
+        }
+      },
+      order: {
+        getGridColumns() {
+          return {
+            data:{
+              meshId:'MESH_ID',
+              apiKey: 'API_KEY'
+            },
+            properties:[
+              {
+                label: 'First App Column',
+                columnId: 'first_column',
+                type: 'string',
+                align: 'left'
+              },
+              {
+                label: 'Second App Column',
+                columnId: 'second_column',
+                type: 'integer',
+                align: 'left'
+              },
+              {
+                label: 'Third App Column',
+                columnId: 'third_column',
+                type: 'date',
+                align: 'left'
+              }
+            ]
+          }
         }
       }
     }

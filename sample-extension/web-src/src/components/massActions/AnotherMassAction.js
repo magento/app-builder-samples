@@ -12,28 +12,46 @@
  * from Adobe.
  */
 import {
-    ComboBox,
-    Heading, Item, View
+    ComboBox, Flex,
+    Heading, Item, ProgressCircle, View
 } from '@adobe/react-spectrum'
-import { useLocation } from 'react-router-dom'
+import { useState} from 'react'
+import { attach } from '@adobe/uix-guest'
+import { extensionId } from '../Constants'
 export const AnotherMassAction = () => {
 
-    const location = useLocation()
-    const queryParams = new URLSearchParams(location.search)
-    const productIds = queryParams.get('productIds').split(',')
-    let items = []
-    productIds.forEach((id) => {
-        items.push({id: id})
+    const [items] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+
+    const getGuestConnection = async () => {
+        return await attach({
+            id: extensionId
+        })
+    }
+
+    getGuestConnection().then((guestConnection) => {
+        guestConnection.sharedContext.get('selectedIds').forEach((id) => {
+            items.push({id: id})
+        })
+        setIsLoading(false)
     })
 
     return (
-        <View margin={10}>
-            <Heading level={1}>Selected Products Ids</Heading>
-            <ComboBox
-                defaultItems={items}
-            >
-                {(item) => <Item key={item.id}>{item.id}</Item>}
-            </ComboBox>
+        <View>
+            {isLoading ? (
+                <Flex alignItems="center" justifyContent="center" height="100vh">
+                    <ProgressCircle size="L" aria-label="Loading…" isIndeterminate />
+                </Flex>
+            ) : (
+                <View margin={10}>
+                    <Heading level={1}>Selected Products Ids</Heading>
+                    <ComboBox
+                        defaultItems={items}
+                    >
+                        {(item) => <Item key={item.id}>{item.id}</Item>}
+                    </ComboBox>
+                </View>
+            )}
         </View>
     )
 }

@@ -12,27 +12,46 @@
  * from Adobe.
  */
 import {
-    Heading, Item, ListView, View
+    Flex,
+    Heading, Item, ListView, ProgressCircle, View
 } from '@adobe/react-spectrum'
-import { useLocation } from 'react-router-dom'
-export const FirstMassAction = () => {
+import { attach } from '@adobe/uix-guest'
+import { extensionId } from '../constants'
+import { useState } from 'react'
 
-    const location = useLocation()
-    const queryParams = new URLSearchParams(location.search)
-    const productIds = queryParams.get('productIds').split(',')
-    let items = []
-    productIds.forEach((id) => {
-        items.push({id: id})
+export const FirstMassAction = () => {
+    const [items] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+
+    const getGuestConnection = async () => {
+        return await attach({
+            id: extensionId
+        })
+    }
+
+    getGuestConnection().then((guestConnection) => {
+        guestConnection.sharedContext.get('selectedIds').forEach((id) => {
+            items.push({id: id})
+        })
+        setIsLoading(false)
     })
 
     return (
-        <View margin={10}>
-            <Heading level={1}>Selected Products Ids</Heading>
-            <ListView
-                items={items}
-            >
-                {(item) => <Item key={item.id}>{item.id}</Item>}
-            </ListView>
+        <View>
+            {isLoading ? (
+                <Flex alignItems="center" justifyContent="center" height="100vh">
+                    <ProgressCircle size="L" aria-label="Loading…" isIndeterminate />
+                </Flex>
+            ) : (
+                <View margin={10}>
+                    <Heading level={1}>Selected Products Ids</Heading>
+                    <ListView
+                        items={items}
+                    >
+                        {(item) => <Item key={item.id}>{item.id}</Item>}
+                    </ListView>
+                </View>
+            )}
         </View>
     )
 }
