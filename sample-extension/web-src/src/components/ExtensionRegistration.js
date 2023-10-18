@@ -81,14 +81,18 @@ const init = async () => {
                 label: 'First App Column',
                 columnId: 'first_column',
                 type: 'string',
-                filter: 'false',
                 align: 'left'
               },
               {
                 label: 'Second App Column',
                 columnId: 'second_column',
                 type: 'integer',
-                filter: 'false',
+                align: 'left'
+              },
+              {
+                label: 'Third App Column',
+                columnId: 'third_column',
+                type: 'date',
                 align: 'left'
               }
             ]
