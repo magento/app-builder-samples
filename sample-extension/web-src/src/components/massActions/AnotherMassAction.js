@@ -12,6 +12,7 @@
  * from Adobe.
  */
 import {
+    Button,
     ComboBox, Flex,
     Heading, Item, ProgressCircle, View
 } from '@adobe/react-spectrum'
@@ -22,6 +23,7 @@ export const AnotherMassAction = () => {
 
     const [items] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [connection, setConnection] = useState(undefined)
 
     const getGuestConnection = async () => {
         return await attach({
@@ -30,6 +32,7 @@ export const AnotherMassAction = () => {
     }
 
     getGuestConnection().then((guestConnection) => {
+        setConnection(guestConnection)
         guestConnection.sharedContext.get('selectedIds').forEach((id) => {
             items.push({id: id})
         })
@@ -44,12 +47,15 @@ export const AnotherMassAction = () => {
                 </Flex>
             ) : (
                 <View margin={10}>
-                    <Heading level={1}>Selected Products Ids</Heading>
+                    <Heading level={1}>Selected Ids</Heading>
                     <ComboBox
                         defaultItems={items}
                     >
                         {(item) => <Item key={item.id}>{item.id}</Item>}
                     </ComboBox>
+                    <Button variant={"primary"} marginStart={10} onPress={async () => { await connection.host.field.close() }}>
+                        Done
+                    </Button>
                 </View>
             )}
         </View>

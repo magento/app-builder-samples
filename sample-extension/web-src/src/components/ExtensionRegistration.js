@@ -73,8 +73,8 @@ const init = async () => {
         getGridColumns() {
           return {
             data:{
-              meshId:'MESH_ID',
-              apiKey: 'API_KEY'
+              meshId:'3e079986-e157-4325-8276-36a6a36b200f',
+              apiKey: 'da1da6ab8f404db985a1a7f0137ed30d'
             },
             properties:[
               {
@@ -97,6 +97,27 @@ const init = async () => {
               }
             ]
           }
+        },
+        getMassActions() {
+          return [
+            {
+              actionId: `${extensionId}::order-first-mass-action`,
+              label: 'First App Mass Action',
+              type: `${extensionId}.order-first-mass-action`,
+              confirm: {
+                title: 'First App Mass Action',
+                message: 'Are you sure your want to proceed with First App Mass Action on selected orders?'
+              },
+              path: '#/first-mass-action',
+              orderSelectLimit: 1
+            },
+            {
+              actionId: `${extensionId}::second-mass-action`,
+              label: 'Second Mass Action',
+              type: `${extensionId}.second-mass-action`,
+              path: '#/another-mass-action'
+            }
+          ]
         }
       }
     }
