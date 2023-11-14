@@ -73,8 +73,8 @@ const init = async () => {
         getGridColumns() {
           return {
             data:{
-              meshId:'3e079986-e157-4325-8276-36a6a36b200f',
-              apiKey: 'da1da6ab8f404db985a1a7f0137ed30d'
+              meshId:'MESH_ID',
+              apiKey: 'API_KEY'
             },
             properties:[
               {
