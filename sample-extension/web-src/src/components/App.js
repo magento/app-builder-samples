@@ -18,6 +18,8 @@ import { Route, Routes, HashRouter } from 'react-router-dom'
 import ExtensionRegistration from './ExtensionRegistration'
 import { FirstMassAction } from './massActions/FirstMassAction'
 import { AnotherMassAction } from './massActions/AnotherMassAction'
+import { CreateReturn } from './customButtons/CreateReturn'
+import { DeleteOrder } from './customButtons/DeleteOrder'
 
 function App (props) {
   console.log('runtime object:', props.runtime)
@@ -41,6 +43,8 @@ function App (props) {
                       <Route index element={<ExtensionRegistration runtime={props.runtime} ims={props.ims} />} />
                       <Route path={'first-mass-action'} element={<FirstMassAction runtime={props.runtime} ims={props.ims} />} />
                       <Route path={'another-mass-action'} element={<AnotherMassAction runtime={props.runtime} ims={props.ims} />} />
+                      <Route path={'create-return'} element={<CreateReturn runtime={props.runtime} ims={props.ims} />} />
+                      <Route path={'delete-order'} element={<DeleteOrder runtime={props.runtime} ims={props.ims} />} />
                   </Routes>
               </Provider>
           </HashRouter>

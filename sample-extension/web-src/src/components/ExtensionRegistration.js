@@ -118,6 +118,29 @@ const init = async () => {
               path: '#/another-mass-action'
             }
           ]
+        },
+        getOrderViewButtons() {
+          return [
+            {
+              buttonId: `${extensionId}::delete-order`,
+              label: 'Delete',
+              confirm: {
+                message: 'Are you sure your want to proceed to delete order?'
+              },
+              path: '#/delete-order',
+              class: 'custom',
+              level: 0,
+              sortOrder: 80
+            },
+            {
+              buttonId: `${extensionId}::create-return`,
+              label: 'Create Return',
+              path: '#/create-return',
+              class: 'custom',
+              level: 0,
+              sortOrder: 80
+            }
+          ]
         }
       }
     }
