@@ -67,14 +67,30 @@ const init = async () => {
               path: '#/another-mass-action'
             }
           ]
+        },
+        getGridColumns() {
+          return {
+            data:{
+              meshId:'',
+              apiKey: ''
+            },
+            properties:[
+              {
+                label: 'App Column',
+                columnId: 'first_column',
+                type: 'string',
+                align: 'left'
+              }
+            ]
+          }
         }
       },
       order: {
         getGridColumns() {
           return {
             data:{
-              meshId:'MESH_ID',
-              apiKey: 'API_KEY'
+              meshId:'',
+              apiKey: ''
             },
             properties:[
               {
