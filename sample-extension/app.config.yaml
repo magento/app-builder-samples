@@ -25,3 +25,21 @@ extensions:
               annotations:
                 require-adobe-auth: false
                 final: true
+            get-order-grid-columns:
+              function: actions/data/orderGridColumns.js
+              web: 'yes'
+              runtime: 'nodejs:16'
+              inputs:
+                LOG_LEVEL: debug
+              annotations:
+                require-adobe-auth: false
+                final: true
+            get-product-grid-columns:
+              function: actions/data/productGridColumns.js
+              web: 'yes'
+              runtime: 'nodejs:16'
+              inputs:
+                LOG_LEVEL: debug
+              annotations:
+                require-adobe-auth: false
+                final: true

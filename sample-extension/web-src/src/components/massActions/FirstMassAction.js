@@ -44,7 +44,7 @@ export const FirstMassAction = () => {
                 </Flex>
             ) : (
                 <View margin={10}>
-                    <Heading level={1}>Selected Products Ids</Heading>
+                    <Heading level={1}>Selected Ids</Heading>
                     <ListView
                         items={items}
                     >

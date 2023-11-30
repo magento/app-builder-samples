@@ -67,14 +67,30 @@ const init = async () => {
               path: '#/another-mass-action'
             }
           ]
+        },
+        getGridColumns() {
+          return {
+            data:{
+              meshId:'',
+              apiKey: ''
+            },
+            properties:[
+              {
+                label: 'App Column',
+                columnId: 'first_column',
+                type: 'string',
+                align: 'left'
+              }
+            ]
+          }
         }
       },
       order: {
         getGridColumns() {
           return {
             data:{
-              meshId:'MESH_ID',
-              apiKey: 'API_KEY'
+              meshId:'',
+              apiKey: ''
             },
             properties:[
               {
@@ -97,6 +113,50 @@ const init = async () => {
               }
             ]
           }
+        },
+        getMassActions() {
+          return [
+            {
+              actionId: `${extensionId}::order-first-mass-action`,
+              label: 'First App Mass Action',
+              type: `${extensionId}.order-first-mass-action`,
+              confirm: {
+                title: 'First App Mass Action',
+                message: 'Are you sure your want to proceed with First App Mass Action on selected orders?'
+              },
+              path: '#/first-mass-action',
+              orderSelectLimit: 1
+            },
+            {
+              actionId: `${extensionId}::second-mass-action`,
+              label: 'Second Mass Action',
+              type: `${extensionId}.second-mass-action`,
+              path: '#/another-mass-action'
+            }
+          ]
+        },
+        getOrderViewButtons() {
+          return [
+            {
+              buttonId: `${extensionId}::delete-order`,
+              label: 'Delete',
+              confirm: {
+                message: 'Are you sure your want to proceed to delete order?'
+              },
+              path: '#/delete-order',
+              class: 'custom',
+              level: 0,
+              sortOrder: 80
+            },
+            {
+              buttonId: `${extensionId}::create-return`,
+              label: 'Create Return',
+              path: '#/create-return',
+              class: 'custom',
+              level: 0,
+              sortOrder: 80
+            }
+          ]
         }
       }
     }
