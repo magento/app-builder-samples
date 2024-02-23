@@ -52,7 +52,6 @@ const init = async () => {
             {
               actionId: `${extensionId}::first-mass-action`,
               label: 'First App Mass Action',
-              type: `${extensionId}.first-mass-action`,
               confirm: {
                 title: 'First App Mass Action',
                 message: 'Are you sure your want to proceed with First App Mass Action on selected products?'
@@ -63,8 +62,15 @@ const init = async () => {
             {
               actionId: `${extensionId}::another-first-mass-action`,
               label: 'Another Mass Action',
-              type: `${extensionId}.another-mass-action`,
-              path: '#/another-mass-action'
+              path: '#/another-mass-action',
+              title: 'Mass Action test'
+            },
+            {
+              actionId: `${extensionId}::mass-action`,
+              label: 'Mass Action',
+              path: '#/mass-action',
+              title: 'Mass Action',
+              displayIframe: false
             }
           ]
         },
@@ -119,7 +125,6 @@ const init = async () => {
             {
               actionId: `${extensionId}::order-first-mass-action`,
               label: 'First App Mass Action',
-              type: `${extensionId}.order-first-mass-action`,
               confirm: {
                 title: 'First App Mass Action',
                 message: 'Are you sure your want to proceed with First App Mass Action on selected orders?'
@@ -130,8 +135,13 @@ const init = async () => {
             {
               actionId: `${extensionId}::second-mass-action`,
               label: 'Second Mass Action',
-              type: `${extensionId}.second-mass-action`,
               path: '#/another-mass-action'
+            },
+            {
+              actionId: `${extensionId}::update-order-mass-action`,
+              label: 'Update Order Mass Action',
+              path: 'api/v1/web/SampleExtension/update-orders',
+              displayIframe: false
             }
           ]
         },
@@ -144,19 +154,33 @@ const init = async () => {
                 message: 'Are you sure your want to proceed to delete order?'
               },
               path: '#/delete-order',
-              class: 'custom',
               level: 0,
               sortOrder: 80
             },
             {
               buttonId: `${extensionId}::create-return`,
               label: 'Create Return',
-              path: '#/create-return',
-              class: 'custom',
-              level: 0,
-              sortOrder: 80
+              path: '#/create-return'
             }
           ]
+        }
+      },
+      customer: {
+        getGridColumns() {
+          return {
+            data:{
+              meshId:'',
+              apiKey: ''
+            },
+            properties:[
+              {
+                label: 'Customer App Column',
+                columnId: 'customer_app_column',
+                type: 'string',
+                align: 'left'
+              }
+            ]
+          }
         }
       }
     }

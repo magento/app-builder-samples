@@ -19,15 +19,13 @@ async function main(params) {
     const logger = Core.Logger('main', { level: params.LOG_LEVEL || 'info' })
 
     try {
-        const requiredParams = ['operation', 'COMMERCE_BASE_URL']
+        const requiredParams = ['operation', 'COMMERCE_BASE_URL', 'COMMERCE_CONSUMER_KEY', 'COMMERCE_CONSUMER_SECRET', 'COMMERCE_ACCESS_TOKEN', 'COMMERCE_ACCESS_TOKEN_SECRET']
         const requiredHeaders = ['Authorization']
         const errorMessage = checkMissingRequestInputs(params, requiredParams, requiredHeaders)
         if (errorMessage) {
             // return and log client errors
             return errorResponse(400, errorMessage, logger)
         }
-
-        const { operation } = params
 
         const oauth = getCommerceOauthClient(
             {
@@ -40,7 +38,7 @@ async function main(params) {
             logger
         )
 
-        const content = await oauth.get(operation)
+        const content = await oauth.get(params.operation)
 
         return {
             statusCode: 200,

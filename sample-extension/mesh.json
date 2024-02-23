@@ -5,7 +5,7 @@
         "name": "data",
         "handler": {
           "JsonSchema": {
-            "baseUrl": "",
+            "baseUrl": "https://1339710-commercefirstapp-stage.adobeio-static.net/api/v1/web/SampleExtension",
             "operations": [
               {
                 "type": "Query",
@@ -20,6 +20,13 @@
                 "path": "/get-product-grid-columns",
                 "method": "GET",
                 "responseSchema": "./schema_products.json"
+              },
+              {
+                "type": "Query",
+                "field": "customers",
+                "path": "/get-customer-grid-columns",
+                "method": "GET",
+                "responseSchema": "./schema_customers.json"
               }
             ]
           }

@@ -31,6 +31,7 @@ export const Products = props => {
     const {isLoadingCommerceProducts, commerceProducts} = useCommerceProducts({...props, pageSize: 400, currentPage: 1})
 
     const productsColumns = [
+        {name: 'Id', uid: 'id'},
         {name: 'SKU', uid: 'sku'},
         {name: 'Name', uid: 'name'},
         {name: 'Status', uid: 'status'},
