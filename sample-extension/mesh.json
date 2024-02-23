@@ -5,7 +5,7 @@
         "name": "data",
         "handler": {
           "JsonSchema": {
-            "baseUrl": "https://1339710-commercefirstapp-stage.adobeio-static.net/api/v1/web/SampleExtension",
+            "baseUrl": "",
             "operations": [
               {
                 "type": "Query",
