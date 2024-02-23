@@ -20,6 +20,13 @@
                 "path": "/get-product-grid-columns",
                 "method": "GET",
                 "responseSchema": "./schema_products.json"
+              },
+              {
+                "type": "Query",
+                "field": "customers",
+                "path": "/get-customer-grid-columns",
+                "method": "GET",
+                "responseSchema": "./schema_customers.json"
               }
             ]
           }

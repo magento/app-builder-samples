@@ -14,6 +14,7 @@
 const Oauth1a = require('oauth-1.0a')
 const crypto = require('crypto')
 const got = require('got')
+const axios = require('axios')
 
 function getOauthClient(options, logger) {
     const instance = {}
@@ -88,7 +89,16 @@ function getOauthClient(options, logger) {
             method: 'POST',
             body: data
         }
-        return apiCall(requestData, requestToken, customHeaders)
+        return axios.post(createUrl(resourceUrl), data, {
+            headers: {
+                ...(requestToken
+                    ? { Authorization: 'Bearer ' + requestToken }
+                    : oauth.toHeader(oauth.authorize(requestData, token))),
+                ...customHeaders
+            }
+        }).catch(function (error) {
+            throw error
+        })
     }
 
     instance.put = async function (resourceUrl, data, requestToken = '') {
