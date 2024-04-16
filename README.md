@@ -1,12 +1,17 @@
-# Adobe App Builder Samples
+# Open Source Adobe Commerce Samples
 
 ## Motivation
 
 The intent is to learn by example, following our best practices for developing Out-of-Process Extensions for Adobe Commerce.
 
-## Introduction
+## Goals
 
-Each repository is a separate project that can be checked, built, ran locally and deployed. For more information about each, refer to the README.md file in each repository. 
+- Provide samples to test integrations with Adobe Commerce.
+- Samples for code best practices in Adobe Commerce.
+
+## Non-Goals
+
+- Code that can be deployed to production.
 
 ## Prerequisites
 
@@ -15,6 +20,10 @@ Each repository is a separate project that can be checked, built, ran locally an
 - Project and workspaces has been created and correctly configured.
 - AIO CLI installed to run commands.
 
-## License
+### Contributing
 
-[Enterprise Edition License](LICENSE_EE.txt)
+Contributions are welcomed! Read the [Contributing Guide](./.github/CONTRIBUTING.md) for more information.
+
+### Licensing
+
+This project is licensed under the Apache V2 License. See [LICENSE](LICENSE) for more information.
