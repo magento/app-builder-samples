@@ -1,5 +1,7 @@
 # Open Source Adobe Commerce Samples
 
+> **⚠️ Deprecated:** This repository is deprecated and will be archived. For samples of Out-of-Process Extensibility for Adobe Commerce, please refer to [adobe/adobe-commerce-samples](https://github.com/adobe/adobe-commerce-samples) instead.
+
 ## Motivation
 
 The intent is to learn by example, following our best practices for developing Out-of-Process Extensions for Adobe Commerce.
